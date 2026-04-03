@@ -1,0 +1,10 @@
+name: support-env
+description: AI customer support simulation environment
+entrypoint: app.env:SupportEnv
+
+tasks:
+  - easy
+  - medium
+  - hard
+
+max_steps: 5

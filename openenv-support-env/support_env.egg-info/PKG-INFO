@@ -1,0 +1,9 @@
+Metadata-Version: 2.4
+Name: support-env
+Version: 0.1.0
+Summary: AI customer support simulation environment
+Requires-Dist: pydantic
+Requires-Dist: openai
+Requires-Dist: fastapi
+Requires-Dist: uvicorn
+Requires-Dist: openenv-core

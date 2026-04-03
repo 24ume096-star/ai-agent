@@ -1,0 +1,32 @@
+{
+  "easy": [
+    {
+      "ticket_id": "T1",
+      "message": "I want a refund",
+      "label": "refund",
+      "history": [],
+      "kb": ["Refunds are allowed within 7 days"]
+    }
+  ],
+  "medium": [
+    {
+      "ticket_id": "T2",
+      "message": "My order is late, what should I do?",
+      "label": "delivery",
+      "history": [],
+      "kb": ["Delivery takes 3-5 days"]
+    }
+  ],
+  "hard": [
+    {
+      "ticket_id": "T3",
+      "message": "I was charged twice and the product is defective",
+      "label": "refund+complaint",
+      "history": [],
+      "kb": [
+        "Refund for defective items",
+        "Double charge can be disputed"
+      ]
+    }
+  ]
+}
