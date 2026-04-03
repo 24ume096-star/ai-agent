@@ -8,11 +8,13 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 # Hugging Face configuration
 ENV HF_HOME=/app/.cache/huggingface
 ENV HF_TOKEN=""
+# Install packages to system Python so executables are on $PATH
+ENV UV_SYSTEM_PYTHON=1
 
 # Copy project from subfolder into the container root
 COPY openenv-support-env/ .
 
-RUN uv sync
+RUN uv sync --no-cache
 
 EXPOSE 7860
 
