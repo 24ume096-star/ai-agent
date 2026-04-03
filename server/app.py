@@ -35,15 +35,18 @@ def read_root():
 def health():
     return {"status": "healthy"}
 
+from typing import Optional
+
 @app.post("/reset", tags=["Environment"])
-def reset(req: ResetRequest):
+def reset(req: Optional[ResetRequest] = None):
     """Reset the environment and start a new task (easy / medium / hard)."""
+    task_name = req.task if req and req.task else "easy"
     valid = ["easy", "medium", "hard"]
-    if req.task not in valid:
+    if task_name not in valid:
         raise HTTPException(status_code=400, detail=f"task must be one of {valid}")
-    obs = _env.reset(req.task)
+    obs = _env.reset(task_name)
     return {
-        "task": req.task,
+        "task": task_name,
         "observation": obs.model_dump()
     }
 
