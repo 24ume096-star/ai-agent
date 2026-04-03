@@ -2,19 +2,15 @@ FROM python:3.10
 
 WORKDIR /app
 
-# OpenEnv frameworks require UV
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
-
 # Hugging Face configuration
 ENV HF_HOME=/app/.cache/huggingface
 ENV HF_TOKEN=""
-# Install packages to system Python so executables are on $PATH
-ENV UV_SYSTEM_PYTHON=1
 
 # Copy project from subfolder into the container root
 COPY openenv-support-env/ .
 
-RUN uv sync --no-cache
+# Install dependencies with pip directly into system Python (guaranteed on $PATH)
+RUN pip install --no-cache-dir uvicorn fastapi pydantic openai huggingface-hub
 
 EXPOSE 7860
 
