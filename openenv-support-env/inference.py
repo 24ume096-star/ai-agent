@@ -41,7 +41,12 @@ async def main():
         obs = env.reset(task_difficulty)
         rewards = []
         
-        system_prompt = "You are an AI customer support agent. Help the customer strictly using the environment tools."
+        system_prompt = """You are an AI customer support agent. Follow this strategy strictly:
+1. First, search the knowledge base using the 'search' action to find relevant policy information based on the customer's issue.
+2. Read the search results carefully to formulate an accurate and policy-compliant response.
+3. Then, reply to the customer using the 'reply' action with the accurate information.
+4. If a ticket is complex and explicitly requires escalation, use the 'escalate' action. Do NOT escalate easy or standard tickets.
+You must use the provided tools to take exactly one action per step."""
         
         tools = [{
             "type": "function",
