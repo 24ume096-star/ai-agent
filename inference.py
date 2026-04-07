@@ -3,9 +3,9 @@ import json
 import asyncio
 from openai import OpenAI
 
-API_BASE_URL = os.getenv("API_BASE_URL", "https://openrouter.ai/api/v1")
-API_KEY = os.getenv("OPENAI_API_KEY", "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")
-MODEL_NAME = os.getenv("MODEL_NAME", "stepfun/step-3.5-flash:free")
+API_BASE_URL = os.environ.get("API_BASE_URL", "https://openrouter.ai/api/v1")
+API_KEY = os.environ.get("API_KEY", os.environ.get("OPENAI_API_KEY"))
+MODEL_NAME = os.environ.get("MODEL_NAME", "stepfun/step-3.5-flash:free")
 
 def log_start(task, env, model):
     print(f"[START] task={task} env={env} model={model}", flush=True)
